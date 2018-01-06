@@ -1,0 +1,8 @@
+from pyspark import SparkConf,SparkContext
+from operator import add,ne
+
+sc = SparkContext('local')
+sc.textFile("")
+rdd = sc.parallelize([("hello",1),("hello",2),("bjsxt",1),("bjsxt",1)])
+for val in sorted(rdd.reduceByKey(add).collect()):
+    print val
